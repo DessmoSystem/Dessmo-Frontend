@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'signin/user', component: SigninUserComponent, data: { title: 'Iniciar Sesión User – Dessmo' } },
 
   //Signup
-  { path: 'signup/administrador/:token', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
+  { path: 'signup/administrador', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
   { path: 'signup/user', component: SignupUserComponent, data: { title: 'Resgistro User – Dessmo' } },
   
   //Dashboard
