@@ -15,9 +15,11 @@ const routes: Routes = [
   { path: 'signin/super-admin', component: SigninSuperadminComponent, data: { title: 'Iniciar Sesión SuperAdmin – Dessmo' } },
   { path: 'signin/administrador', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Dessmo' } },
   { path: 'signin/user', component: SigninUserComponent, data: { title: 'Iniciar Sesión User – Dessmo' } },
+
   //Signup
   { path: 'signup/administrador/:token', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
   { path: 'signup/user', component: SignupUserComponent, data: { title: 'Resgistro User – Dessmo' } },
+  
   //Dashboard
   {
     path: ' ',

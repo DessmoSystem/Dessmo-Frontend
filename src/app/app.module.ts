@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { authInterceptorProviders } from './util/auth.interceptor';
 
 import { SignInModule } from './pages/sign-in/sign-in.module';
 import { SignUpModule } from './pages/sign-up/sign-up.module';
@@ -19,6 +21,8 @@ import { UserModule } from './pages/dashboard/user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    
     SignInModule,
     SignUpModule,
     SuperadminModule,
@@ -26,7 +30,7 @@ import { UserModule } from './pages/dashboard/user/user.module';
     UserModule
  
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
