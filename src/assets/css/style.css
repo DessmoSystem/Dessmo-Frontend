@@ -27602,7 +27602,7 @@ table.dataTable thead .sorting {
 .authincation-content {
   background: #0B2A97;
   box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
-  border-radius: 5px; }
+  border-radius: 25px; }
   [data-theme-version="dark"] .authincation-content {
     background: #1e2746;
     box-shadow: none; }
