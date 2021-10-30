@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { authInterceptorProviders } from './util/auth.interceptor';
+import { environment } from '../environments/environment';
+
 
 import { SignInModule } from './pages/sign-in/sign-in.module';
 import { SignUpModule } from './pages/sign-up/sign-up.module';
@@ -27,7 +29,8 @@ import { UserModule } from './pages/dashboard/user/user.module';
     SignUpModule,
     SuperadminModule,
     AdminModule,
-    UserModule
+    UserModule,
+   
  
   ],
   providers: [authInterceptorProviders],

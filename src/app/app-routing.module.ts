@@ -12,7 +12,7 @@ import { SignupUserComponent } from './pages/sign-up/signup-user/signup-user.com
 const routes: Routes = [
   
   //Signin//
-  { path: 'signin/super-admin', component: SigninSuperadminComponent, data: { title: 'Iniciar Sesión SuperAdmin – Dessmo' } },
+  { path: 'signin/superadmin', component: SigninSuperadminComponent, data: { title: 'Iniciar Sesión SuperAdmin – Dessmo' } },
   { path: 'signin/administrador', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Dessmo' } },
   { path: 'signin/user', component: SigninUserComponent, data: { title: 'Iniciar Sesión User – Dessmo' } },
 
