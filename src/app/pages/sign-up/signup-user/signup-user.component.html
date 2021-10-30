@@ -28,29 +28,175 @@
                                                 <a href="index.html"><img src="../../../../assets/images/Dessmo-Monocromatico.png" width="40%" alt=""></a>
                                             </div>
                                             <h4 class="text-center mb-4 text-white">Registro como Usuario</h4>
-                                            <form action="index.html">
+
+                                            <form [formGroup]="userSignupForm" (ngSubmit)="SignupUsuario()" >
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Nombres</strong></label>
-                                                    <input type="text" class="form-control" placeholder="Nombres">
+                                                    <input (input)="AlertDefault()" type="text" class="form-control" placeholder="Nombres"
+                                                    name="nombreUsuario" formControlName="nombreUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': userSignupForm.controls['nombreUsuario'].invalid && 
+                                                                     (userSignupForm.controls['nombreUsuario'].dirty || 
+                                                                     userSignupForm.controls['nombreUsuario'].touched) , 
+                                                          'is-valid': userSignupForm.controls['nombreUsuario'].valid}">
+                                                          
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['nombreUsuario'].hasError('required')">
+                                                                No puede dejar este campo vacío
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['nombreUsuario'].hasError('minlength')">
+                                                                Debe contener al menos 2 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['nombreUsuario'].hasError('maxlength')">
+                                                                Debe contener como maximo 50 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['nombreUsuario'].hasError('pattern')">
+                                                                Caracteres no permitidos
+                                                            </span>
+                                                        </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Apellidos</strong></label>
-                                                    <input type="text" class="form-control" placeholder="Apellidos">
+                                                    <input (input)="AlertDefault()" type="text" class="form-control" placeholder="Apellidos"
+                                                    name="apellidoUsuario" formControlName="apellidoUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': userSignupForm.controls['apellidoUsuario'].invalid && 
+                                                                     (userSignupForm.controls['apellidoUsuario'].dirty || 
+                                                                     userSignupForm.controls['apellidoUsuario'].touched) , 
+                                                          'is-valid': userSignupForm.controls['apellidoUsuario'].valid}">
+                                                          
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['apellidoUsuario'].hasError('required')">
+                                                                No puede dejar este campo vacío
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['apellidoUsuario'].hasError('minlength')">
+                                                                Debe contener al menos 2 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['apellidoUsuario'].hasError('maxlength')">
+                                                                Debe contener como maximo 50 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['apellidoUsuario'].hasError('pattern')">
+                                                                Caracteres no permitidos
+                                                            </span>
+                                                        </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Email</strong></label>
-                                                    <input type="email" class="form-control" placeholder="hello@example.com">
+                                                    <input (input)="AlertDefault()" type="email" class="form-control" placeholder="hello@example.com"
+                                                     name="emailUsuario" formControlName="emailUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': userSignupForm.controls['emailUsuario'].invalid && 
+                                                                    (userSignupForm.controls['emailUsuario'].dirty || 
+                                                                    userSignupForm.controls['emailUsuario'].touched) , 
+                                                        'is-valid': userSignupForm.controls['emailUsuario'].valid}">
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['emailUsuario'].hasError('required')">
+                                                                No puede dejar este campo vacío
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['emailUsuario'].hasError('email')">
+                                                                Correo electrónico no válido
+                                                            </span>
+                                                        </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Username</strong></label>
-                                                    <input type="text" class="form-control" placeholder="Username">
+                                                    <input (input)="AlertDefault()" type="text" class="form-control" placeholder="Username"
+                                                    name="usernameUsuario" formControlName="usernameUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': userSignupForm.controls['usernameUsuario'].invalid && 
+                                                                     (userSignupForm.controls['usernameUsuario'].dirty || 
+                                                                     userSignupForm.controls['usernameUsuario'].touched) , 
+                                                          'is-valid': userSignupForm.controls['usernameUsuario'].valid}">
+                                                          
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['usernameUsuario'].hasError('required')">
+                                                                No puede dejar este campo vacío
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['usernameUsuario'].hasError('minlength')">
+                                                                Debe contener al menos 2 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['usernameUsuario'].hasError('maxlength')">
+                                                                Debe contener como maximo 50 caracteres
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['usernameUsuario'].hasError('pattern')">
+                                                                Caracteres no permitidos
+                                                            </span>
+                                                        </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Contraseña</strong></label>
-                                                    <input type="password" class="form-control" value="Password">
+                                                    <input (input)="AlertDefault()" type="password" class="form-control"
+                                                    name="passwordUsuario" formControlName="passwordUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': userSignupForm.controls['passwordUsuario'].invalid && 
+                                                                      (userSignupForm.controls['passwordUsuario'].dirty || 
+                                                                      userSignupForm.controls['passwordUsuario'].touched) , 
+                                                          'is-valid': userSignupForm.controls['passwordUsuario'].valid}">
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('required')">
+                                                                No puede dejar este campo vacío
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('minlength')">
+                                                                Debe contener al menos 8 caracteres
+                                                            </span>
+                                                        </div> 
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
+                                                                Debe contener al menos un número
+                                                            </span>
+                                                        </div> 
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('passworduppercase')">
+                                                                Debe contener al menos una letra mayúscula
+                                                            </span>
+                                                        </div> 
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
+                                                                Debe contener al menos una letra minúscula
+                                                            </span>
+                                                        </div>
+                                                        <div class="invalid-feedback">
+                                                            <span class="text-danger" *ngIf="userSignupForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
+                                                                Debe contener al menos un carácter especial
+                                                            </span>
+                                                        </div> 
                                                 </div>
                                                 <div class="text-center mt-4">
-                                                    <button type="submit" class="btn bg-white text-primary btn-block">Registrarme</button>
+                                                    <button type="submit" (click)="AlertDefault()" [disabled]="!userSignupForm.valid" class="btn bg-white text-primary btn-block">Registrarme</button>
+                                                </div>
+
+                                                <div class="text-center mt-4" *ngIf="this.verificar">
+                                                    <div class="alert alert-danger text-center" role="alert">
+                                                        {{ this.message }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="text-center mt-4" *ngIf="this.verificar2">
+                                                    <div class="alert alert-success text-center" role="alert">
+                                                        {{ this.message }}
+                                                    </div>
                                                 </div>
                                             </form>
                                             <div class="new-account mt-3">
