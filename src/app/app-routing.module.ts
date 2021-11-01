@@ -9,6 +9,9 @@ import { SigninUserComponent } from './pages/sign-in/signin-user/signin-user.com
 import { SignupAdminComponent } from './pages/sign-up/signup-admin/signup-admin.component';
 import { SignupUserComponent } from './pages/sign-up/signup-user/signup-user.component';
 import { SignupUserVerifyComponent } from './pages/sign-up/signup-user/signup-user-verify/signup-user-verify.component';
+//Restore Password
+import { PasswordComponent } from './pages/password/password.component';
+import { RestorePasswordComponent } from './pages/password/restore-password/restore-password.component'; 
 
 const routes: Routes = [
   
@@ -21,6 +24,10 @@ const routes: Routes = [
   { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
   { path: 'signup/user', component: SignupUserComponent, data: { title: 'Resgistro User – Dessmo' } },
   { path: 'signup/usuario/verify/:token', component: SignupUserVerifyComponent, data: { title: 'Verificar Registro Usuario – Dessmo' } },
+
+  //Restore Password
+  { path: 'restore/password', component: PasswordComponent, data: { title: 'Solicitar Cambio de Contraseña – Dessmo' } },
+  { path: 'restore/password/:token', component: RestorePasswordComponent, data: { title: 'Cambiar Contraseña – Dessmo' } },
 
   
   //Dashboard
