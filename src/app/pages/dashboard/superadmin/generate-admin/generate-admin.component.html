@@ -1,1 +1,51 @@
-<p>generate-admin works!</p>
+<div class="container-fluid">
+    <div class="page-titles">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Configuración</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Año y Mes</a></li>
+        </ol>
+    </div>
+
+    <div class="col-xl-6 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Inline Form</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form class="form-inline" [formGroup]="invitacionAdminSigninForm" (ngSubmit)="invitarAdmin()">
+                        <div class="form-group mb-2">
+                            <label class="sr-only">Correo</label>
+                            <input type="text" readonly class="form-control-plaintext" value="Ingrese un correo">
+                        </div>
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label class="sr-only">Correo</label>
+                            <input type="email" class="form-control" name="emailUsuario" formControlName="emailUsuario"
+                            [ngClass]="{
+                                'is-invalid': invitacionAdminSigninForm.controls['emailUsuario'].invalid && 
+                                            (invitacionAdminSigninForm.controls['emailUsuario'].dirty || 
+                                            invitacionAdminSigninForm.controls['emailUsuario'].touched) , 
+                                'is-valid': invitacionAdminSigninForm.controls['emailUsuario'].valid}">
+                                <div class="invalid-feedback">
+                                    <span class="text-danger" *ngIf="invitacionAdminSigninForm.controls['emailUsuario'].hasError('required')">
+                                        No puede dejar este campo vacío
+                                    </span>
+                                </div>
+                                <div class="invalid-feedback">
+                                    <span class="text-danger" *ngIf="invitacionAdminSigninForm.controls['emailUsuario'].hasError('email')">
+                                        Correo electrónico no válido
+                                    </span>
+                                </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Solicitud <span
+                            class="btn-icon-right"><i class="fa fa-envelope"></i></span>
+                        </button>                      
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+

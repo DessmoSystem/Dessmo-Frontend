@@ -25,28 +25,49 @@
                                                 <a href="index.html"><img src="../../../../assets/images/Dessmo-Monocromatico.png" style="width: 38%;" alt=""></a>
                                             </div>
                                             <h4 class="text-center mb-4 text-white">Ingresa tus credenciales para iniciar sesión como Administrador</h4>
-                                            <form action="index.html">
+
+                                            <form [formGroup]="adminSigninForm" (ngSubmit)="SigninUsuario()">
                                                 <div class="form-group">
-                                                    <label class="mb-1 text-white"><strong>Email</strong></label>
-                                                    <input type="email" class="form-control" value="Ingresa tu correo electrónico">
+                                                    <label class="mb-1 text-white"><strong>Email o Username</strong></label>
+                                                    <input (input)="AlertDefault()" type="email" class="form-control" name="usernameUsuario" formControlName="usernameUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': adminSigninForm.controls['usernameUsuario'].invalid && 
+                                                                     (adminSigninForm.controls['usernameUsuario'].dirty || 
+                                                                     adminSigninForm.controls['usernameUsuario'].touched) , 
+                                                          'is-valid': adminSigninForm.controls['usernameUsuario'].valid}">
+                                                    <div id="emailUsuario" class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSigninForm.controls['usernameUsuario'].hasError('required')">
+                                                            No puede dejar este campo vacío
+                                                        </span>
+                                                    </div>                                                    
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="mb-1 text-white"><strong>Contraseña</strong></label>
-                                                    <input type="password" class="form-control" value="Ingresa tu contraseña">
+                                                    <input (input)="AlertDefault()" type="password" class="form-control" name="passwordUsuario" formControlName="passwordUsuario"
+                                                    [ngClass]="{
+                                                        'is-invalid': adminSigninForm.controls['passwordUsuario'].invalid && 
+                                                                     (adminSigninForm.controls['passwordUsuario'].dirty || 
+                                                                     adminSigninForm.controls['passwordUsuario'].touched) , 
+                                                          'is-valid': adminSigninForm.controls['passwordUsuario'].valid}">
+                                                    <div id="emailUsuario" class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSigninForm.controls['passwordUsuario'].hasError('required')">
+                                                            No puede dejar este campo vacío
+                                                        </span>
+                                                    </div>   
                                                 </div>
                                                 <div class="form-row d-flex justify-content-between mt-4 mb-2">
+                                                   
                                                     <div class="form-group">
-                                                    <div class="custom-control custom-checkbox ml-1 text-white">
-                                                            <input type="checkbox" class="custom-control-input" id="basic_checkbox_1">
-                                                            <label class="custom-control-label" for="basic_checkbox_1">Recordar datos</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a class="text-white" href="page-forgot-password.html">¿Contraseña Olvidada?</a>
+                                                        <a class="text-white" href="restore/password">¿Contraseña Olvidada?</a>
                                                     </div>
                                                 </div>
                                                 <div class="text-center">
-                                                    <button type="submit" class="btn bg-white text-primary btn-block">Iniciar Sesión</button>
+                                                    <button type="submit" [disabled]="!adminSigninForm.valid"  class="btn bg-white text-primary btn-block">Iniciar Sesión</button>
+                                                </div>
+                                                <div class="text-center mt-4" *ngIf="this.verificar">
+                                                    <div class="alert alert-danger text-center" role="alert">
+                                                        {{ this.message }}
+                                                    </div>
                                                 </div>
                                             </form>
                                             <div class="new-account mt-3">

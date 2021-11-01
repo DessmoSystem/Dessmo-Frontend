@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+iframe{
+    zoom: 0.89;
+    -moz-transform: scale(0.89);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.89);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.89);
+    -webkit-transform-origin: 0 0;
+}
+
+.centrado{
+    display: inline-block!important;
+    margin-top: -5%!important;
+    margin-left: 17%!important;
+}
+
+div.chat {
+    position: fixed;
+    width: 300px;
+    height: 75%;
+    background: #1b2a97;
+    right: 0;
+    bottom: 0;
+    margin: 0 10px 10px 0;
+}
+div.chat > .header {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    background: red;
+    border-left: 20%!important;
+}
+div.chat > .footer {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    background: grey;
+}
+div.chat > .conversation-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #1b2a97;
+    padding: 60px 0 40px 0;
+    box-sizing: border-box;
+    
+}
+div.chat > .conversation-wrapper > .conversation-body {
+    position: relative;
+    background: lightgrey;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    overflow-y: scroll;
+}
+div.chat > .conversation-wrapper > .conversation-body > .msg {
+    position: relative;
+    width: 75%;
+    background: blue;
+    color: white;
+    padding: 5px;
+    margin: 0 0 20px 0;
+}
