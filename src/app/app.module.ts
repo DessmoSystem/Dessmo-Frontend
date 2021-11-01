@@ -14,22 +14,28 @@ import { SignUpModule } from './pages/sign-up/sign-up.module';
 import { SuperadminModule } from './pages/dashboard/superadmin/superadmin.module';
 import { AdminModule } from './pages/dashboard/admin/admin.module';
 import { UserModule } from './pages/dashboard/user/user.module';
+import { PasswordModule } from './pages/password/password.module';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     
     SignInModule,
     SignUpModule,
     SuperadminModule,
     AdminModule,
     UserModule,
+    PasswordModule
    
  
   ],
