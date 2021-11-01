@@ -60,7 +60,7 @@ export class SignupAdminComponent implements OnInit {
     
   SignupUsuario() : void{
     //local
-    this.token = location.href.slice(35); 
+    this.token = location.href.slice(42); 
     //producción     https://dessmo-1a622.web.app/signup/admin/:token
     //this.token = location.href.slice(42); 
 

@@ -42,11 +42,11 @@ export class RestorePasswordComponent implements OnInit {
 
   RestaurarContra():void{
     //local
-    this.token = location.href.slice(39); 
+    this.token = location.href.slice(46); 
     console.log(this.token)
 
     //producción     https://dessmo-1a622.web.app/signup/admin/:token
-    //this.token = location.href.slice(42); 
+    //this.token = location.href.slice(46); 
 
     var email: any = {
       utilityToken: this.token,
