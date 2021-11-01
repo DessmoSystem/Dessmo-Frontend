@@ -23,6 +23,8 @@ export class SigninSuperadminComponent implements OnInit {
   //variables
   message: any;
   verificar = false;
+  loggedSuperAdmin: any;
+
   //fin variables
   
   public superAdminSigninForm = this.fb.group({
@@ -45,8 +47,7 @@ export class SigninSuperadminComponent implements OnInit {
       data => {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);
-        //this.loggedPostulante = this.tokenstorageService.getUser();
-        //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
+        window.location.href= '/superadmin/generate-user';
       },
 
       err => {

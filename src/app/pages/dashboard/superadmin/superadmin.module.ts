@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SuperadminRoutingModule } from './superadmin-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { SuperadminRoutingModule } from './superadmin-routing.module';
 import { SuperadminComponent } from './superadmin.component';
 import { GenerateAdminComponent } from './generate-admin/generate-admin.component';
 
@@ -14,6 +15,7 @@ import { GenerateAdminComponent } from './generate-admin/generate-admin.componen
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     SuperadminRoutingModule
   ]
 })

@@ -45,13 +45,16 @@ export class SigninAdminComponent implements OnInit {
       data => {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);
-        //this.loggedPostulante = this.tokenstorageService.getUser();
-        //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
+
+        window.location.href= '/admin';
+
       },
 
       err => {
         this.message = err.error.message;
         this.verificar = true;
+        console.log(err)
+
       }
     )
   }

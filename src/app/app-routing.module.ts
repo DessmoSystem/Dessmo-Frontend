@@ -8,6 +8,7 @@ import { SigninUserComponent } from './pages/sign-in/signin-user/signin-user.com
 //Signup
 import { SignupAdminComponent } from './pages/sign-up/signup-admin/signup-admin.component';
 import { SignupUserComponent } from './pages/sign-up/signup-user/signup-user.component';
+import { SignupUserVerifyComponent } from './pages/sign-up/signup-user/signup-user-verify/signup-user-verify.component';
 
 const routes: Routes = [
   
@@ -16,9 +17,11 @@ const routes: Routes = [
   { path: 'signin/administrador', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Dessmo' } },
   { path: 'signin/user', component: SigninUserComponent, data: { title: 'Iniciar Sesión User – Dessmo' } },
 
-  //Signup
-  { path: 'signup/administrador', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
+  //Signup 
+  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
   { path: 'signup/user', component: SignupUserComponent, data: { title: 'Resgistro User – Dessmo' } },
+  { path: 'signup/usuario/verify/:token', component: SignupUserVerifyComponent, data: { title: 'Verificar Registro Usuario – Dessmo' } },
+
   
   //Dashboard
   {

@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token != null) {
       authreq = request.clone({headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token)});
     }
-
+    
     return next.handle(authreq);
   }
 }

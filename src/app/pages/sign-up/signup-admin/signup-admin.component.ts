@@ -12,6 +12,7 @@ import { CustomValidators } from '../../tools/custom-validator';
   styleUrls: []
 })
 export class SignupAdminComponent implements OnInit {
+  token: any;
 
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAdminService : SignupAdminService, 
@@ -19,6 +20,8 @@ export class SignupAdminComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    
+
   }
 
   //variables
@@ -53,19 +56,30 @@ export class SignupAdminComponent implements OnInit {
 
   });
 
+  
+    
   SignupUsuario() : void{
+    //local
+    this.token = location.href.slice(35); 
+    //producción     https://dessmo-1a622.web.app/signup/admin/:token
+    //this.token = location.href.slice(42); 
+
+    console.log(this.token)
+
     var usuario: AdminSignup = {
-      utilitytokenUsuario: '321321sdas',
+      utilitytokenUsuario: this.token,
       nombreUsuario: this.adminSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario: this.adminSignupForm.controls['apellidoUsuario'].value,
       passwordUsuario: this.adminSignupForm.controls['passwordUsuario'].value
     }
+    
 
     this.signupAdminService.SignUpAdmin(usuario).subscribe(
       data => {
         this.verificar2 = true; 
         this.message = data.message;
         console.log(data)
+        window.location.href= '/signin/administrador';
         //this.loggedPostulante = this.tokenstorageService.getUser();
         //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
       },

@@ -18,7 +18,7 @@ export class SignupAdminService {
   constructor(private http: HttpClient) { }
 
   SignUpAdmin(usuario: AdminSignup): Observable<any> {
-    return this.http.post(
+    return this.http.put(
       this.API_URL,
       usuario,
       httpOptions

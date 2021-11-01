@@ -44,9 +44,10 @@ export class SigninUserComponent implements OnInit {
       data => {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);
+        window.location.href= '/user';
+
         //this.loggedPostulante = this.tokenstorageService.getUser();
         //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
-        console.log(data)
       },
       
       err => {

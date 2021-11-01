@@ -1,1 +1,26 @@
-<p>generate-admin works!</p>
+
+<form [formGroup]="invitacionAdminSigninForm" (ngSubmit)="invitarAdmin()">
+    <div>
+        <input type="email" class="form-control" placeholder="hello@example.com"
+        name="emailUsuario" formControlName="emailUsuario"
+       [ngClass]="{
+           'is-invalid': invitacionAdminSigninForm.controls['emailUsuario'].invalid && 
+                       (invitacionAdminSigninForm.controls['emailUsuario'].dirty || 
+                       invitacionAdminSigninForm.controls['emailUsuario'].touched) , 
+           'is-valid': invitacionAdminSigninForm.controls['emailUsuario'].valid}">
+           <div class="invalid-feedback">
+               <span class="text-danger" *ngIf="invitacionAdminSigninForm.controls['emailUsuario'].hasError('required')">
+                   No puede dejar este campo vacío
+               </span>
+           </div>
+           <div class="invalid-feedback">
+               <span class="text-danger" *ngIf="invitacionAdminSigninForm.controls['emailUsuario'].hasError('email')">
+                   Correo electrónico no válido
+               </span>
+           </div>
+        
+    </div>
+
+    <button type="submit">Aprobar</button>
+
+</form>
