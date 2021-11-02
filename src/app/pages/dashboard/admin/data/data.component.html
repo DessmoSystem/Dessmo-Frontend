@@ -5,130 +5,29 @@
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Data</a></li>
         </ol>
     </div>
-    <!-- -->
-    
-    <div class="col-xl-12">
+
+    <div class="col-xl-4 col-lg-6">
         <div class="card">
-            <div class="card-body">
-                
-                <!-- -->
-                <div class="pr-3 mb-2 mr-auto">                                
+            <div class="card-header pb-0 border-0">
+                <span class="p-3 mr-3 rounded bg-secondary" style="width: 60px;">
+                    <i style="margin-left: 11%; font-size: 25px; color: white;" class="fa fa-upload color-info"></i>
+                </span>
+                <div class="mr-auto pr-3">
+                    <h4 class="text-black fs-20">Carga de Datos</h4>
+                    <p class="fs-13 mb-0 text-black">Sube aquí la data para que sea cargada en el Sistema.</p>
+                </div>
+            </div>
+            <div class="card-body pb-3">
+                <div class="pr-3 mb-2 mr-auto" style="margin-left: 25%;">                                
                     <button type="button" class="btn light btn-primary" style="overflow: hidden; position: relative;">
                         <input class="fileInput" (change)="CargarData($event)" type="file" name="file1" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                         style="cursor: pointer; height: 100%; position:absolute; top: 0; right: 0; z-index: 99; opacity: 0; -moz-opacity: 0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)"/>
                         <span class="btn-icon-left text-primary">
                             <i class="fa fa-upload color-info"></i>
-                        </span>Carga Trabajadores
+                        </span>Subir Archivo
                     </button>
                 </div>
-                <!-- -->
             </div>
-            
         </div>
     </div>
-    <!---->
-
-    <div class="chat-box">
-        <div class="open">Encuesta de Satisfacción
-          <div class="box">
-            <br>
-            <div class="card">
-                <div class="card-body">
-                    <p style="font-weight: bolder; color: black;">¿Como Calificaría la Satisfacción del uso del Sistema?</p>
-                    <div class="">
-                        <form>
-                            <div class="form-group mb-0">
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Deficiente</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deficiente</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aceptable</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buena</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Buena</a> </label>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-rounded btn-primary" style="margin-top: 10%; margin-left: 20%;"><span
-                                class="btn-icon-left text-primary"><i class="fa fa-send"></i>
-                            </span>Enviar</button>
-                        </form>
-                        
-                    </div>
-                </div>
-
-            </div>
-            <br>
-          </div>
-        <div>
-    <div>
-
-    <!-- <div class="wrapper">
-        <div class="chat-box">
-          <div class="chat-head">
-            <h2>Chat Box</h2>
-            <img src="https://maxcdn.icons8.com/windows10/PNG/16/Arrows/angle_down-16.png" title="Expand Arrow" width="16">
-          </div>
-          <div class="chat-body">
-            <div class="msg-insert">
-      <div class="msg-send"> Send message </div>
-      <div class="msg-receive"> Received message </div>
-    </div>
-            <div class="chat-text">
-              <textarea placeholder="Send"></textarea>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-    <!-- <div class="chat">
-        <div style="font-weight: bolder; color: white;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Encuesta de Satisfaccion
-        </div>
-        <div class="conversation-wrapper">
-          <div class="conversation-body">
-              <div class="card">
-                
-                <div class="card-body">
-                    <p style="font-weight: bolder; color: black;">¿Cómo Calificaría la satisfacción del uso del Sistema?</p>
-                    <br>
-                    <br>
-                    <div class="basic-form">
-                        <form>
-                            <div class="form-group mb-0">
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Deficiente</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deficiente</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aceptable</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buena</a> </label>
-                                </div>
-                                <div class="radio">
-                                    <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Buena</a> </label>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <button type="button" class="btn btn-rounded btn-primary" style="margin-top: 30%; margin-left: 20%;"><span
-                        class="btn-icon-left text-primary"><i class="fa fa-send"></i>
-                    </span>Enviar</button>
-                </div>  
-              </div>
-            
-            
-            
-            
-          </div>
-        </div>
-    </div> -->
 </div>

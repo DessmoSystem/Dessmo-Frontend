@@ -10,7 +10,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class UserService {
 
   private API_URL = GlobalUrl.BASE_URL + 'api/';
 

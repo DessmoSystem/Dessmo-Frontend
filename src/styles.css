@@ -193,3 +193,7 @@ div.chat > .conversation-wrapper > .conversation-body > .msg {
     border-top-left-radius: 15px!important;
     border-top-right-radius: 15px!important;
   }
+
+#inputcito{
+  width: 200%!important;
+}
