@@ -28,7 +28,7 @@
 
                                             <form [formGroup]="adminSigninForm" (ngSubmit)="SigninUsuario()">
                                                 <div class="form-group">
-                                                    <label class="mb-1 text-white"><strong>Email o Username</strong></label>
+                                                    <label class="mb-1 text-white"><strong>Usuario o Correo Electrónico</strong></label>
                                                     <input (input)="AlertDefault()" type="email" class="form-control" name="usernameUsuario" formControlName="usernameUsuario"
                                                     [ngClass]="{
                                                         'is-invalid': adminSigninForm.controls['usernameUsuario'].invalid && 
