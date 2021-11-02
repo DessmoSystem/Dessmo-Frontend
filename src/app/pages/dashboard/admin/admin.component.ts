@@ -33,9 +33,7 @@ export class AdminComponent implements OnInit {
   factorPsicologico: any; 
   factorResponsabilidadFamiliar: any; 
   factorTecnologico: any;
-
-  
-  //Fin Variables//
+  expiradaso: any;  
   //Fin Variables//
 
   public adminForm = this.fb.group({  
@@ -47,6 +45,7 @@ export class AdminComponent implements OnInit {
     if(a == null || a == undefined){
       this.isVisibleEncuesta = true;
     }else{
+      
       this.isVisibleEncuesta = false
     }
   }
@@ -62,7 +61,6 @@ export class AdminComponent implements OnInit {
     this.tokenstorageService.getUser();
     
     this.basicInfo = this.tokenstorageService.getUser();
-    console.log(this.basicInfo.idUsuario)
             
     var satisfaccion: any = {
       valorSatisfaccion: this.selectValor
@@ -95,18 +93,42 @@ export class AdminComponent implements OnInit {
     )
   } 
 
+  TokenExpired(token: string) {    
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    return (Math.floor((new Date).getTime() / 1000)) >= expiry; 
+  }
+   
   Auth() {  
+    this.basicInfo = this.tokenstorageService.getUser();
+    var auth = this.basicInfo.authorities[0]
 
-    if (this.tokenstorageService.getToken()) {
-      this.basicInfo = this.tokenstorageService.getUser();
-      this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen;      
+    if(auth.authority == 'ROLE_USER'){
+      window.location.href= 'user'
+    }
 
-    } else {
-      if( this.tokenstorageService.getToken() == ""){
+    if(auth.authority == 'ROLE_ADMIN'){
+      if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
+        if (this.TokenExpired(this.basicInfo.token)) {
+          this.expiradaso =  'expirado';
+          this.Exit();
+  
+        } else {
+          this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
+          this.expiradaso =  'valido';
+        }
+       
+      } else {
+        if( this.tokenstorageService.getToken() == ""){
+          this.Exit();
+        }      
         this.Exit();
       }
-      this.Exit();
     }
+
+    if(auth.authority == 'ROLE_SUPERADMIN'){
+      window.location.href= 'superadmin'
+    }
+    
   }
 
   Exit() {

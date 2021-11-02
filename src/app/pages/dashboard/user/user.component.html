@@ -55,7 +55,7 @@
                                 
                                 <li class="nav-item dropdown header-profile">
                                     <a class="nav-link" href="javascript:void(0)" role="button" data-toggle="dropdown">
-                                        <img src="{{this.basicInfo.fotoUsuario}}" width="20" alt=""/>
+                                        <img src="{{this.fotoUsuario}}" width="20" alt=""/>
                                         <div class="header-info">
                                             <span class="text-black"><strong>Charles Xavier</strong></span>
                                             <p class="fs-12 mb-0">Usuario</p>
@@ -70,31 +70,31 @@
                                         <p style="font-weight: bolder;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resumen</p>
                                         <div class="card-body">
                                             <h6>Factor Económico
-                                                <span class="pull-right">85%</span>
+                                                <span class="pull-right">{{this.factorEconomico}}</span>
                                             </h6>
                                             <div class="progress ">
-                                                <div class="progress-bar bg-danger progress-animated" style="width: 85%; height:6px;" role="progressbar">
+                                                <div class="progress-bar bg-danger progress-animated" [style.width]="factorEconomico" style="height:6px;" role="progressbar">
                                                 </div>
                                             </div>
                                             <h6 class="mt-4">Factor Psicológico
-                                                <span class="pull-right">90%</span>
+                                                <span class="pull-right">{{this.factorPsicologico}}</span>
                                             </h6>
                                             <div class="progress">
-                                                <div class="progress-bar bg-info progress-animated" style="width: 90%; height:6px;" role="progressbar">
+                                                <div class="progress-bar bg-info progress-animated" [style.width]="factorPsicologico" style="height:6px;" role="progressbar">
                                                 </div>
                                             </div>
                                             <h6 class="mt-4">Factor Tecnológico
-                                                <span class="pull-right">65%</span>
+                                                <span class="pull-right">{{this.factorTecnologico}}</span>
                                             </h6>
                                             <div class="progress">
-                                                <div class="progress-bar bg-success progress-animated" style="width: 65%; height:6px;" role="progressbar">
+                                                <div class="progress-bar bg-success progress-animated" [style.width]="factorTecnologico" style="height:6px;" role="progressbar">
                                                 </div>
                                             </div>
                                             <h6 class="mt-4">Responsabilidad Familiar
-                                                <span class="pull-right">25%</span>
+                                                <span class="pull-right">{{this.factorResponsabilidadFamiliar}}</span>
                                             </h6>
                                             <div class="progress">
-                                                <div class="progress-bar bg-inverse progress-animated" style="width: 25%; height:6px;" role="progressbar">
+                                                <div class="progress-bar bg-inverse progress-animated" [style.width]="factorResponsabilidadFamiliar" style="height:6px;" role="progressbar">
                                                 </div>
                                             </div>
                                         </div>
@@ -132,7 +132,8 @@
             <!-- Content body start -->
             <div class="content-body">
                 <router-outlet></router-outlet>
-                <div class="chat-box">
+                
+                <div class="chat-box" *ngIf="this.isVisibleEncuesta" >
                     <div class="open">Encuesta de Satisfacción
                       <div class="box">
                         <br>
@@ -140,25 +141,28 @@
                             <div class="card-body">
                                 <p style="font-weight: bolder; color: black;">¿Como Calificaría la Satisfacción del uso del Sistema?</p>
                                 <div class="">
-                                    <form>
+                                    <form [formGroup]="adminForm" (ngSubmit)="EnviarEncuesta()">
                                         <div class="form-group mb-0">
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Deficiente</a> </label>
+                                                <label><input type="radio" name="optradio" value="Muy Deficiente" (change)="capturarValor($event)"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Deficiente</a> </label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deficiente</a> </label>
+                                                <label><input type="radio" name="optradio" value="Deficiente" (change)="capturarValor($event)"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deficiente</a> </label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aceptable</a> </label>
+                                                <label><input type="radio" name="optradio" value="Aceptable" (change)="capturarValor($event)"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Aceptable</a> </label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buena</a> </label>
+                                                <label><input type="radio" name="optradio" value="Buena" (change)="capturarValor($event)"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Buena</a> </label>
                                             </div>
                                             <div class="radio">
-                                                <label><input type="radio" name="optradio"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Buena</a> </label>
+                                                <label><input type="radio" name="optradio" value="Muy Buena" (change)="capturarValor($event)"><a style="font-weight: bolder; color: #000;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Muy Buena</a> </label>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-rounded btn-primary" style="margin-top: 10%; margin-left: 20%;"><span
+                                        <button *ngIf="this.isVisible" type="submit" class="btn btn-rounded btn-primary" style="margin-top: 10%; margin-left: 20%;" disabled><span
+                                            class="btn-icon-left text-primary"><i class="fa fa-send"></i>
+                                        </span>Enviar</button>
+                                        <button *ngIf="this.isVisible2" type="submit" class="btn btn-rounded btn-primary" style="margin-top: 10%; margin-left: 20%;"><span
                                             class="btn-icon-left text-primary"><i class="fa fa-send"></i>
                                         </span>Enviar</button>
                                     </form>

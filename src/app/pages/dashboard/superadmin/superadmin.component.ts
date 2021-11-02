@@ -8,7 +8,6 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
   styleUrls: []
 })
 export class SuperadminComponent implements OnInit {
-
   
   constructor(private tokenstorageService : TokenStorageService,
               private router: Router) { }
@@ -19,22 +18,49 @@ export class SuperadminComponent implements OnInit {
 
   //Variables//
   basicInfo : any;
-  //Fin Variables//
- 
+  expiradaso: any;
+  fotoUsuario: any;
 
+  //Fin Variables// 
+
+  TokenExpired(token: string) {    
+    const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+    return (Math.floor((new Date).getTime() / 1000)) >= expiry; 
+  }
+   
   Auth() {  
+    this.basicInfo = this.tokenstorageService.getUser();
 
-    if (this.tokenstorageService.getToken()) {
-      this.basicInfo = this.tokenstorageService.getUser();
-      this.basicInfo.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen;
-      
+    var auth = this.basicInfo.authorities[0]
 
-    } else {
-      if( this.tokenstorageService.getToken() == ""){
+    if(auth.authority == 'ROLE_USER'){
+      window.location.href= 'user'
+    }
+
+    if(auth.authority == 'ROLE_ADMIN'){
+      window.location.href= 'admin'
+    }
+
+    if(auth.authority == 'ROLE_SUPERADMIN'){
+      if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
+        if (this.TokenExpired(this.basicInfo.token)) {
+          this.expiradaso =  'expirado';
+          this.Exit();
+  
+        } else {
+          this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
+          this.expiradaso =  'valido';
+        }
+       
+      } else {
+        if( this.tokenstorageService.getToken() == ""){
+          this.Exit();
+        }      
         this.Exit();
       }
-      this.Exit();
     }
+
+    
   }
 
   Exit() {
