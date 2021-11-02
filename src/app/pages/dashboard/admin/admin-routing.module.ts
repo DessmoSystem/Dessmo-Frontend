@@ -11,6 +11,7 @@ const routesAdmin : Routes = [
   {
     path: 'admin', component: AdminComponent,
     children: [
+      { path: '', redirectTo: 'data', pathMatch: 'full' },  
       { path: 'dashboard', component: DashboardAdminComponent}, 
       { path: 'roles', component: RolComponent}, 
       { path: 'data', component: DataComponent}, 

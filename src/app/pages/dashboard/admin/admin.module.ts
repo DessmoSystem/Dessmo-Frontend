@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminComponent } from './admin.component';
 
@@ -18,6 +19,7 @@ import { DataComponent } from './data/data.component';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     AdminRoutingModule
   ]
 })

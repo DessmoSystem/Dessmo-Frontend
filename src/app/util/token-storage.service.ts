@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const POLL_KEY = 'auth-poll';
 
 @Injectable({
     providedIn: 'root'
@@ -38,4 +39,13 @@ const USER_KEY = 'auth-user';
     
         return {};
       }
+
+  public saveEncuesta(poll: string): void {
+        window.localStorage.removeItem(POLL_KEY);
+        window.localStorage.setItem(POLL_KEY, poll);
+  }
+    
+  public getEncuesta(): string | null {
+        return window.localStorage.getItem(POLL_KEY);
+  }
 }
