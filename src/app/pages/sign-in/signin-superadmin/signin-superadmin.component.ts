@@ -51,7 +51,7 @@ export class SigninSuperadminComponent implements OnInit {
       },
 
       err => {
-        this.message = err.error.message;
+        this.message = "Correo o Contraseña Incorrecta"
         this.verificar = true;      }
     )
   }

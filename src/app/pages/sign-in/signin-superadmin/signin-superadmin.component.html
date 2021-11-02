@@ -28,7 +28,7 @@
 
                                             <form [formGroup]="superAdminSigninForm" (ngSubmit)="SigninUsuario()">
                                                 <div class="form-group">
-                                                    <label class="mb-1 text-white"><strong>Email</strong></label>
+                                                    <label class="mb-1 text-white"><strong>Usuario o Correo Electrónico</strong></label>
                                                     <input (input)="AlertDefault()" type="email" class="form-control" name="usernameUsuario" formControlName="usernameUsuario"
                                                     [ngClass]="{
                                                         'is-invalid': superAdminSigninForm.controls['usernameUsuario'].invalid && 
@@ -70,9 +70,6 @@
                                                 </div>
                                             </form>
                                             
-                                            <div class="new-account mt-3">
-                                                <p class="text-white">¿No tienes una cuenta? <a class="text-white" href="./page-register.html">Regístrate</a></p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
