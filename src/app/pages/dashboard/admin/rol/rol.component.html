@@ -24,7 +24,7 @@
                         </thead>
                         <tbody>                        
                             <tr *ngFor="let list of CurrentLista">
-                                <th>{{list.nombreUsuario}}</th>
+                                <td>{{list.nombreUsuario}}</td>
                                 <!--<td><span class="badge badge-danger light">Extended</span>
                                 </td>-->
                                 <td>{{list.fecharegistroUsuario}}</td>
@@ -35,6 +35,7 @@
                                         <a  class="btn btn-danger shadow btn-xs sharp" [class.active]="list == ListSolicitud" (click)="SeleccionarSolicitud(list)" (click)="this.DenegarSolicitud()"><i class="fa fa-trash"></i></a>
                                     </div>
                                 </td>
+
                             </tr>                        
                         </tbody>
                     </table>

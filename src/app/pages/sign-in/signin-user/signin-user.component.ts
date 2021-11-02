@@ -18,11 +18,13 @@ export class SigninUserComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.ifLogin();
   }
 
   //variables
   message: any;
   verificar = false;
+  userToken: any;
   //fin variables
   
   public userSigninForm = this.fb.group({    
@@ -56,6 +58,24 @@ export class SigninUserComponent implements OnInit {
     )
   }
 
+  ifLogin(){
+
+    if(this.tokenstorageService.getUser()){
+      this.userToken = this.tokenstorageService.getUser()
+      var auth = this.userToken.authorities[0]
+
+      if(auth.authority == 'ROLE_USER'){
+        window.location.href= 'user'
+      }    
+      if(auth.authority == 'ROLE_ADMIN'){
+        window.location.href= 'admin'
+      }    
+      if(auth.authority == 'ROLE_SUPERADMIN'){
+        window.location.href= 'superadmin'
+      }
+    }
+  }
+  
   AlertDefault(){
     this.verificar = false;
   }

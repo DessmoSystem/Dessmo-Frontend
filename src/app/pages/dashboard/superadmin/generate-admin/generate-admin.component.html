@@ -18,7 +18,7 @@
                             <label style="font-weight: bold;" class="col-sm-3 col-form-label">Ingrese un Correo Electrónico</label>
                             <div class="col-sm-9">
                                 <label class="sr-only">Correo</label>
-                                <input type="email" class="form-control" name="emailUsuario" formControlName="emailUsuario" placeholder="Email"
+                                <input (input)="AlertDefault()" type="email" class="form-control" name="emailUsuario" formControlName="emailUsuario" placeholder="Email"
                                 [ngClass]="{
                                     'is-invalid': invitacionAdminSigninForm.controls['emailUsuario'].invalid && 
                                                 (invitacionAdminSigninForm.controls['emailUsuario'].dirty || 
@@ -37,9 +37,21 @@
                             </div>
                         </div>
                         <div style="margin-left: 35%; margin-top: 5%;">
-                            <button type="submit" class="btn btn-primary">Enviar Solicitud <span
+                            <button (click)="AlertDefault()" [disabled]="!invitacionAdminSigninForm.valid" type="submit" class="btn btn-primary">Enviar Solicitud <span
                                 class="btn-icon-right"><i class="fa fa-envelope"></i></span>
                             </button> 
+                        </div>
+
+                        <div class="text-center mt-4" *ngIf="this.verificar">
+                            <div class="alert alert-danger text-center" role="alert">
+                                {{this.message}}
+                            </div>
+                        </div>
+            
+                        <div class="text-center mt-4" *ngIf="this.verificar2">
+                            <div class="alert alert-success text-center" role="alert">
+                                {{this.message}}
+                            </div>
                         </div>
                          
                     </form>

@@ -11,20 +11,20 @@ import { TokenStorageService } from '../../../util/token-storage.service';
   styleUrls: []
 })
 export class SigninSuperadminComponent implements OnInit {
-
+  
   constructor(private tokenstorageService : TokenStorageService, 
               private signinSuperadminService : SigninSuperadminService, 
               private fb : FormBuilder,
               private router: Router) { }
 
   ngOnInit(): void {
+    this.ifLogin();  
   }
 
   //variables
   message: any;
   verificar = false;
-  loggedSuperAdmin: any;
-
+  userToken: any;
   //fin variables
   
   public superAdminSigninForm = this.fb.group({
@@ -54,10 +54,32 @@ export class SigninSuperadminComponent implements OnInit {
         this.message = "Correo o Contraseña Incorrecta"
         this.verificar = true;      }
     )
+  }  
+  
+  ifLogin(){
+
+    if(this.tokenstorageService.getUser()){
+      this.userToken = this.tokenstorageService.getUser()
+      var auth = this.userToken.authorities[0]
+
+      if(auth.authority == 'ROLE_USER'){
+        window.location.href= 'user'
+      }    
+      if(auth.authority == 'ROLE_ADMIN'){
+        window.location.href= 'admin'
+      }    
+      if(auth.authority == 'ROLE_SUPERADMIN'){
+        window.location.href= 'superadmin'
+      }
+    }
   }
 
   AlertDefault(){
     this.verificar = false;
+  }
+
+  Exit() {
+    this.tokenstorageService.signOut();
   }
 
 }
