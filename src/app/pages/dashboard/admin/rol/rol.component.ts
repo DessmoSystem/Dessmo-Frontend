@@ -53,7 +53,7 @@ export class RolComponent implements OnInit {
 
     this.rolService.CheckSolicitud(this.ListSolicitud.idUsuario).subscribe(
       data => {      
-        console.log(data)
+        window.location.reload();
         //this.loggedPostulante = this.tokenstorageService.getUser();
         //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
       },
@@ -67,7 +67,7 @@ export class RolComponent implements OnInit {
 
     this.rolService.DenySolicitud(this.ListSolicitud.idUsuario).subscribe(
       data => {      
-        console.log(data)
+        window.location.reload();
         //this.loggedPostulante = this.tokenstorageService.getUser();
         //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
       },

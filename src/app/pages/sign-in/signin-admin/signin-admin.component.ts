@@ -19,11 +19,13 @@ export class SigninAdminComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.ifLogin()
   }
 
   //variables
   message: any;
   verificar = false;
+  userToken: any;
   //fin variables
 
   public adminSigninForm = this.fb.group({    
@@ -59,7 +61,58 @@ export class SigninAdminComponent implements OnInit {
     )
   }
 
+  ifLogin(){
+
+    if(this.tokenstorageService.getUser()){
+      this.userToken = this.tokenstorageService.getUser()
+      var auth = this.userToken.authorities[0]
+
+      if(auth.authority == 'ROLE_USER'){
+        window.location.href= 'user'
+      }    
+      if(auth.authority == 'ROLE_ADMIN'){
+        window.location.href= 'admin'
+      }    
+      if(auth.authority == 'ROLE_SUPERADMIN'){
+        window.location.href= 'superadmin'
+      }
+    }
+  }
+
+  
+  
+/*
+if(auth.authority == 'ROLE_USER'){
+          this.Exit();
+          window.location.href= 'sigin/user'
+        }    
+        if(auth.authority == 'ROLE_ADMIN'){
+          this.Exit();
+          window.location.href= 'signin/administrador'
+        }    
+        if(auth.authority == 'ROLE_SUPERADMIN'){
+          this.Exit();
+          window.location.href= 'signin/superadmin'
+        }
+
+
+        if(auth.authority == 'ROLE_USER'){
+          window.location.href= 'user'
+        }    
+        if(auth.authority == 'ROLE_ADMIN'){
+          window.location.href= 'admin'
+        }    
+        if(auth.authority == 'ROLE_SUPERADMIN'){
+          window.location.href= 'superadmin'
+        }
+*/
   AlertDefault(){
     this.verificar = false;
   }
+
+  Exit() {
+    this.tokenstorageService.signOut();
+  }
+
 }
+

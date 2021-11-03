@@ -36,24 +36,32 @@ export class DataComponent implements OnInit {
   CargarData(event:any):void {
 
     this.basicInfo = this.tokenstorageService.getUser();
-    console.log(this.basicInfo.idUsuario)            
 
     this.selectedcv = event.target.files;
     if (this.selectedcv) {
       const cv: File | null = this.selectedcv.item(0);
       if (cv) {
         this.currentcv = cv;
-        console.log(this.currentcv);
         this.dataService.UploadData(this.basicInfo.idUsuario, this.currentcv).subscribe(
           data => { 
-            console.log(data)            
+            this.message = data.message;
+            this.verificar = false;
+            this.verificar2 = true;
+            console.log(this.message)            
           },
           err => {
+            this.verificar = true;
+            this.verificar2 = false;
             console.log(err)           
           }
         );
       }
     }
+  }
+
+  AlertDefault(){
+    this.verificar = false;
+    this.verificar2 = false; 
   }
 
 }

@@ -33,31 +33,37 @@ export class GenerateAdminComponent implements OnInit {
   });
 
 
-invitarAdmin():void{
+  invitarAdmin():void{
 
-  this.tokenstorageService.getToken();
-  this.tokenstorageService.getUser();
-  
+    this.tokenstorageService.getToken();
+    this.tokenstorageService.getUser();
+    
 
-  var email: any = {
-    emailUsuario: this.invitacionAdminSigninForm.controls['emailUsuario'].value
-  }    
+    var email: any = {
+      emailUsuario: this.invitacionAdminSigninForm.controls['emailUsuario'].value
+    }    
 
-  this.generateAdminService.EnviarCorreo(email).subscribe(
-    data => {
-      this.verificar2 = true; 
-      this.message = data.message;
-      console.log(data)
-      //this.loggedPostulante = this.tokenstorageService.getUser();
-      //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
-    },
-    err => {
-      this.message = err.error.message;
-      this.verificar = true;    
-      console.log(err)
-    }
-  )
-}
-  
+    this.generateAdminService.EnviarCorreo(email).subscribe(
+      data => {
+        this.verificar = false;
+        this.verificar2 = true; 
+        this.message = data.message;
+        console.log(data)
+        //this.loggedPostulante = this.tokenstorageService.getUser();
+        //this.router.navigate(['/postulante/' + this.loggedPostulante.idPostulante + '/profile']);
+      },
+      err => {
+        this.message = err.error.message;
+        this.verificar = true;  
+        this.verificar2 = false;   
+        console.log(err)
+      }
+    )
+  }
+    
+  AlertDefault(){
+    this.verificar = false;
+    this.verificar2 = false; 
+  }
   
 }
