@@ -17,11 +17,13 @@ import { UserModule } from './pages/dashboard/user/user.module';
 import { PasswordModule } from './pages/password/password.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { IndexModule } from './pages/index/index.module';
+import { Error403Module } from './pages/error403/error403.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,   
     
   ],
   imports: [
@@ -30,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     
+    IndexModule,
+    Error403Module,
     SignInModule,
     SignUpModule,
     SuperadminModule,
