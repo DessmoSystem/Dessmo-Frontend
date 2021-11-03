@@ -29,8 +29,10 @@ export class SignupUserVerifyComponent implements OnInit {
 
   UserVerify() : void{
 
+    this.token = location.href.slice(44)
+
     var token: any = {
-      utilityToken: this.token = location.href.slice(44)
+      utilityToken: this.token
     }    
 
     this.signupUserService.VerifyUser(token).subscribe(

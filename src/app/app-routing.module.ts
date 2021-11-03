@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+//Index
+import { IndexComponent } from './pages/index/index.component';
+
 //Signin
 import { SigninSuperadminComponent } from './pages/sign-in/signin-superadmin/signin-superadmin.component';
 import { SigninAdminComponent } from './pages/sign-in/signin-admin/signin-admin.component';
@@ -13,7 +16,11 @@ import { SignupUserVerifyComponent } from './pages/sign-up/signup-user/signup-us
 import { PasswordComponent } from './pages/password/password.component';
 import { RestorePasswordComponent } from './pages/password/restore-password/restore-password.component'; 
 
+
 const routes: Routes = [
+
+  //Index//
+  { path: 'index', component: IndexComponent, data: { title: 'Index – Dessmo' } },
   
   //Signin//
   { path: 'signin/superadmin', component: SigninSuperadminComponent, data: { title: 'Iniciar Sesión SuperAdmin – Dessmo' } },

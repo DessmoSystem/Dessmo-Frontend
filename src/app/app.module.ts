@@ -17,11 +17,13 @@ import { UserModule } from './pages/dashboard/user/user.module';
 import { PasswordModule } from './pages/password/password.module';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { IndexComponent } from './pages/index/index.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    IndexComponent,
     
   ],
   imports: [
