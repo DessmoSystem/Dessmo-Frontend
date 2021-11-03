@@ -15,12 +15,14 @@ import { SignupUserVerifyComponent } from './pages/sign-up/signup-user/signup-us
 //Restore Password
 import { PasswordComponent } from './pages/password/password.component';
 import { RestorePasswordComponent } from './pages/password/restore-password/restore-password.component'; 
+import { Error403Component } from './pages/error403/error403.component';
 
 
 const routes: Routes = [
 
   //Index//
   { path: 'index', component: IndexComponent, data: { title: 'Index – Dessmo' } },
+  { path: '', component: IndexComponent, data: { title: 'Index – Dessmo' } },
   
   //Signin//
   { path: 'signin/superadmin', component: SigninSuperadminComponent, data: { title: 'Iniciar Sesión SuperAdmin – Dessmo' } },
@@ -49,7 +51,11 @@ const routes: Routes = [
   {
     path: ' ',
     loadChildren: () => import ('./pages/dashboard/user/user.module').then(module =>module.UserModule)
-  }
+  },
+
+  //Error 403
+  { path: 'error/403', component: Error403Component, data: { title: 'Ocurrió un error – Dessmo' } },
+
 
 ];
 
