@@ -32,7 +32,7 @@ const routes: Routes = [
   //Signup 
   { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Resgistro Administrador – Dessmo' } },
   { path: 'signup/user', component: SignupUserComponent, data: { title: 'Resgistro User – Dessmo' } },
-  { path: 'signup/usuario/verify', component: SignupUserVerifyComponent, data: { title: 'Verificar Registro Usuario – Dessmo' } },
+  { path: 'signup/usuario/verify/:token', component: SignupUserVerifyComponent, data: { title: 'Verificar Registro Usuario – Dessmo' } },
 
   //Restore Password
   { path: 'restore/password', component: PasswordComponent, data: { title: 'Solicitar Cambio de Contraseña – Dessmo' } },
