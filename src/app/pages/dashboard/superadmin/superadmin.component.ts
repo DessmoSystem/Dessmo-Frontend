@@ -31,34 +31,41 @@ export class SuperadminComponent implements OnInit {
   Auth() {  
     this.basicInfo = this.tokenstorageService.getUser();
 
-    var auth = this.basicInfo.authorities[0]
+    if(this.basicInfo.idUsuario === undefined){
+      window.location.href= 'index'
+    }else{
+      var auth = this.basicInfo.authorities[0]
 
-    if(auth.authority == 'ROLE_USER'){
-      window.location.href= 'user'
-    }
-
-    if(auth.authority == 'ROLE_ADMIN'){
-      window.location.href= 'admin'
-    }
-
-    if(auth.authority == 'ROLE_SUPERADMIN'){
-      if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
-        if (this.TokenExpired(this.basicInfo.token)) {
-          this.expiradaso =  'expirado';
-          this.Exit();
-  
-        } else {
-          this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
-          this.expiradaso =  'valido';
-        }
-       
-      } else {
-        if( this.tokenstorageService.getToken() == ""){
-          this.Exit();
-        }      
-        this.Exit();
+      if(auth.authority == 'ROLE_USER'){
+        window.location.href= 'user'
       }
+
+      if(auth.authority == 'ROLE_ADMIN'){
+        window.location.href= 'admin'
+      }
+
+      if(auth.authority == 'ROLE_SUPERADMIN'){
+        if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
+          if (this.TokenExpired(this.basicInfo.token)) {
+            this.expiradaso =  'expirado';
+            this.Exit();
+    
+          } else {
+            this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
+            this.expiradaso =  'valido';
+          }
+        
+        } else {
+          if( this.tokenstorageService.getToken() == ""){
+            this.Exit();
+          }      
+          this.Exit();
+        }
+      }
+
     }
+
+    
 
     
   }
