@@ -40,8 +40,7 @@ export class SignupUserComponent implements OnInit {
     usernameUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(50),
-      Validators.pattern("([a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+( [a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+)*)")
+      Validators.maxLength(50)
     ])),
 
     apellidoUsuario: new FormControl('', Validators.compose([
@@ -62,7 +61,7 @@ export class SignupUserComponent implements OnInit {
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
-      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
+      CustomValidators.patternValidator(/[@#$:\^%&*]/, {passwordspecialcharacter: true})
     ])),
 
   });
