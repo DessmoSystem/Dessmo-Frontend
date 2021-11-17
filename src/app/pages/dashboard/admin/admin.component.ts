@@ -113,7 +113,7 @@ export class AdminComponent implements OnInit {
     
           } else {
             this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
-            this.nUser = this.basicInfo.usernameUsuario;
+            this.nUser = this.basicInfo.nombreUsuario;
             this.expiradaso =  'valido';
           }
          
