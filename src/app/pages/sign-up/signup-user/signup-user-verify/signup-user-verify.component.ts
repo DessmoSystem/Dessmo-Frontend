@@ -29,7 +29,7 @@ export class SignupUserVerifyComponent implements OnInit {
 
   UserVerify() : void{
 
-    this.token = location.href.slice(44)
+    this.token = location.href.slice(51)
 
     var token: any = {
       utilityToken: this.token
