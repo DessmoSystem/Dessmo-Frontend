@@ -10,6 +10,7 @@ import { UserService } from './user.service';
   styleUrls: []
 })
 export class UserComponent implements OnInit {
+  nUser: any;
 
   constructor(private tokenstorageService : TokenStorageService,
               private router: Router,
@@ -48,36 +49,39 @@ export class UserComponent implements OnInit {
   Auth() {  
     this.basicInfo = this.tokenstorageService.getUser();
 
-    var auth = this.basicInfo.authorities[0]
-
-    if(auth.authority == 'ROLE_USER'){
-      if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
-        if (this.TokenExpired(this.basicInfo.token)) {
-          this.expiradaso =  'expirado';
-          this.Exit();
-  
+    if(this.basicInfo.idUsuario === undefined){
+      window.location.href= 'index'
+    }else{
+      var auth = this.basicInfo.authorities[0]
+      if(auth.authority == 'ROLE_USER'){
+        if (this.basicInfo.token != null || this.basicInfo.token != undefined ) {
+          if (this.TokenExpired(this.basicInfo.token)) {
+            this.expiradaso =  'expirado';
+            this.Exit();
+    
+          } else {
+            this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
+            this.nUser = this.basicInfo.usernameUsuario;
+            this.expiradaso =  'valido';
+          }
+        
         } else {
-          this.fotoUsuario = this.basicInfo.fotoUsuario.urlImagen; 
-          this.expiradaso =  'valido';
-        }
-       
-      } else {
-        if( this.tokenstorageService.getToken() == ""){
+          if( this.tokenstorageService.getToken() == ""){
+            this.Exit();
+          }      
           this.Exit();
-        }      
-        this.Exit();
+        }
+      }
+
+      if(auth.authority == 'ROLE_ADMIN'){
+        window.location.href= 'admin'
+      }
+
+      if(auth.authority == 'ROLE_SUPERADMIN'){
+        window.location.href= 'superadmin'
       }
     }
 
-    if(auth.authority == 'ROLE_ADMIN'){
-      window.location.href= 'admin'
-    }
-
-    if(auth.authority == 'ROLE_SUPERADMIN'){
-      window.location.href= 'superadmin'
-    }
-
-    
   }
 
 
